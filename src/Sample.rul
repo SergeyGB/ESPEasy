@@ -1,0 +1,10 @@
+on System#Boot do    //When the ESP boots, do
+   timerSet,1,5      //Set Timer 1 for the next event in 10 seconds
+endon
+On Rules#Timer=1 do  //When Timer1 expires, do
+   timerSet,1,120       //Set Timer 2 for the next event in 1 second
+   Publish SolderTemperatureT,[Solder#Temperature]
+endon
+On Solder#Temperature do
+   Publish SolderTemperatureE,[Solder#Temperature]
+endon
